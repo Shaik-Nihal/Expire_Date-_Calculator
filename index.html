@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expiry Date Calculator</title>
+</head>
+
+<body>
+  <div class="blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h1>Fresh Check</h1>
+      <p class="subtitle">Calculate product lifespan and expiration</p>
+
+      <form id="calculator-form">
+        <!-- Manufacturing Date Section -->
+        <div class="section-card">
+          <div class="section-header">
+            <div class="icon-wrapper mfg-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <label>Manufacturing Date</label>
+          </div>
+
+          <div class="grid-3">
+            <div class="select-wrapper">
+              <label class="sub-label">Year</label>
+              <select id="mfg-year" required></select>
+            </div>
+            <div class="select-wrapper">
+              <label class="sub-label">Month</label>
+              <select id="mfg-month" required>
+                <option value="" disabled selected>Select Month</option>
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+              </select>
+            </div>
+            <div class="select-wrapper">
+              <label class="sub-label">Day (Optional)</label>
+              <select id="mfg-day">
+                <option value="">Unspecified</option>
+              </select>
+            </div>
+          </div>
+          <div id="mfg-date-error" class="error-message">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>Manufacturing date cannot be in the future</span>
+          </div>
+        </div>
+
+        <!-- Best Before Section -->
+        <div class="section-card">
+          <div class="section-header">
+            <div class="icon-wrapper expiry-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <label>Best Before</label>
+          </div>
+
+          <div class="tabs">
+            <div class="tab active" data-tab="duration">Months Duration</div>
+            <div class="tab" data-tab="date">Specific Date</div>
+          </div>
+
+          <!-- Tab Content: Duration -->
+          <div id="tab-duration" class="tab-content active">
+            <label class="sub-label">Shelf Life (Months)</label>
+            <input type="number" id="shelf-life-months" placeholder="e.g. 12" min="1">
+          </div>
+
+          <!-- Tab Content: Specific Date -->
+          <div id="tab-date" class="tab-content">
+            <label class="sub-label">Expiry Date</label>
+            <input type="date" id="specific-expiry-date">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Calculate Expiry</button>
+      </form>
+
+      <div id="result">
+        <div class="result-card-large" id="result-container">
+          <div class="result-header">
+            <div class="status-icon-large" id="status-icon">!</div>
+            <h2 id="status-text">Product Valid</h2>
+          </div>
+
+          <div class="result-details">
+            <div class="detail-box">
+              <span class="detail-label">Expiry Date</span>
+              <span class="detail-value" id="expiry-date-display">--</span>
+            </div>
+
+            <div class="detail-grid">
+              <div class="detail-box-small">
+                <span class="detail-label">Status</span>
+                <span class="detail-value-small" id="time-remaining-display">--</span>
+              </div>
+              <div class="detail-box-small">
+                <span class="detail-label">Days Count</span>
+                <span class="detail-value-small" id="days-count-display">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
