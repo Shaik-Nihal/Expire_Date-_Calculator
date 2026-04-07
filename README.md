@@ -194,6 +194,6 @@ Deploy the generated `dist/` folder to any static hosting provider, such as:
 
 ## License
 
-No license file is currently included in this repository.
+This project is licensed under the MIT License.
 
-If you plan to distribute this project publicly, add a license (for example, MIT) before release.
+See [LICENSE](LICENSE) for the full text.
